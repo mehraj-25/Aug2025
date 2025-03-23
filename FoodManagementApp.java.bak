@@ -1,0 +1,135 @@
+/*Aug-24 Today's Practical Task..
+
+Problem Statement:
+Create a Food Management System using a Vector in Java. Implement a Food POJO (Plain Old Java Object) class with the following properties:
+
+    foodId (int)
+    foodName (String)
+    price (double)
+    category (String)
+
+Perform 10 different operations on a Vector list:
+
+    1.Add Food Items: Allow the user to add food items to the vector.
+    2.Display All Food Items: Show all available food items.
+	3.Search Food by Name: Find and display food items based on a given name.
+	4.Update Food Price by ID: Modify the price of a food item by providing its foodId.
+	5.Delete a Food Item by ID: Remove a food item from the vector using its foodId.
+	6.Sort Food Items by Price: Sort the food items in ascending order of price.
+	7.Filter Food by Category: Display all food items belonging to a specific category (e.g., "Dessert").
+	8.Find the Most Expensive Food Item: Identify and display the most expensive food item in the vector.
+	9.Find the Cheapest Food Item: Identify and display the cheapest food item in the vector.
+	10.Count Food Items in Each Category: Count and display the number of food items in each category.
+	*/
+	
+	
+import java.util.*;
+import java.util.Vector;
+
+class Food
+{
+	private int foodId;
+	private String foodName;
+	private double foodPrice;
+	private String category;
+	
+	
+	public Food(int foodId,String foodName,double foodPrice,String category)
+	{
+		this.foodId=foodId;
+		this.foodName=foodName;
+		this.foodPrice=foodPrice;
+		this.category=category;
+	}
+	public int getFoodId() {
+		return foodId;
+	}
+	public void setFoodId(int foodId) {
+		this.foodId = foodId;
+	}
+	public String getFoodName() {
+		return foodName;
+	}
+	public void setFoodName(String foodName) {
+		this.foodName = foodName;
+	}
+	public double getPrice() {
+		return foodPrice;
+	}
+	public void setPrice(double foodPrice) {
+		this.foodPrice = foodPrice;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+}
+public class FoodManagementApp
+{
+	public static void main(String x[])
+	{
+		Vector v=new Vector();
+	
+		do{
+			Scanner sc=new Scanner(System.in);
+			System.out.println("1.Add food items : ");
+			System.out.println("2.Display All Food Items: Show all available food items.");
+			System.out.println("3.Search Food by Name: Find and display food items based on a given name.");
+			System.out.println("4.Update Food Price by ID: Modify the price of a food item by providing its foodId.");
+			System.out.println("Enter your choice");
+			int choice=sc.nextInt();
+			
+			switch(choice)
+			{
+				case 1:
+					System.out.println("Adding food items in vector");
+					for(int i=0;i<3;i++)
+					{
+						System.out.println("Enter food id : ");
+						int id=sc.nextInt();
+						sc.nextLine();
+						System.out.println("Enter food name : ");
+						String name=sc.nextLine();
+						System.out.println("Enter food price");
+						double price=sc.nextDouble();
+						sc.nextLine();
+						System.out.println("Enter category");
+						String category=sc.nextLine();
+						Food f=new Food(id,name,price,category);
+						v.add(f);
+					}
+				break;	
+				case 2:
+					System.out.println("Displaying food items");
+					Iterator i=v.iterator();
+					while(i.hasNext())
+					{
+						Object obj=i.next();
+						Food f1=(Food)obj;
+						System.out.println("Food ID : "+f1.getFoodId()+"\t"+"FoodName : "+f1.getFoodName()+"\t"+"FoodPrice : "+f1.getPrice()+"\t"+"Category"+f1.getCategory());
+					}
+				break;	
+				case 3:
+					sc.nextLine();
+					System.out.println("Searching food by name");
+					String sname=sc.nextLine();
+					i=v.iterator();
+					while(i.hasNext())
+					{
+						Object obj=i.next();
+						Food f1=(Food)obj;
+						if(f1.getFoodName().equals(sname))
+						{
+							System.out.println("Food ID : "+f1.getFoodId()+"\t"+"FoodName : "+f1.getFoodName()+"\t"+"FoodPrice : "+f1.getPrice()+"\t"+"Category : "+f1.getCategory());
+						}
+					}
+				break;	
+				case 4:
+					System.out.println("Updating Food Price by ID");
+					
+			}
+		}while(true);
+	}
+}
